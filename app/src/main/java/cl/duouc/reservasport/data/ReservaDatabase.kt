@@ -5,7 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Reserva::class], version = 1)
+@Database(
+    entities = [Reserva::class],
+    version = 2,
+    exportSchema = false
+)
 abstract class ReservaDatabase : RoomDatabase() {
 
     abstract fun reservaDao(): ReservaDao
@@ -20,7 +24,9 @@ abstract class ReservaDatabase : RoomDatabase() {
                     context.applicationContext,
                     ReservaDatabase::class.java,
                     "reservasport_db"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
 
                 INSTANCE = instancia
                 instancia

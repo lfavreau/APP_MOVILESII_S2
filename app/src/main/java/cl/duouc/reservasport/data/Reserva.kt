@@ -11,5 +11,6 @@ data class Reserva(
     val cancha: String,
     val fecha: String,
     val hora: String,
-    val estado: String
+    val estado: String,
+    val imagenUrl: String
 )
